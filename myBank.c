@@ -2,20 +2,20 @@
 
 //Bank Functions
 open_account(){ //O
-			for (size_t i = 0; i < 50 ; i++) {
-					if(accounts[i][1] == 0){
-						printf("Please enter amount to deposit :");
-						double amount;
-						scanf("%lf" , amount);
-						accounts[i][0] = amount;
-						accounts[i][1] = 1;
-						printf("Your account number is : %d" , i+901);
-						break;
-					}
+	for (size_t i = 0; i < 50 ; i++) {
+			if(accounts[i][1] == 0){
+				printf("Please enter amount to deposit :");
+				double amount;
+				scanf("%lf" , amount);
+				accounts[i][0] = amount;
+				accounts[i][1] = 1;
+				printf("Your account number is : %d" , i+901);
+			}
 			}
 			if(i==50){
 				printf("Unfortunately there is no unused account \n Please try again later...");
-}
+			}
+
 deactivate_account(int acc_number){  //C
 	if (accounts[acc_number - 901][1]) == 1){
 			accounts[acc_number - 901][0] = 0;
@@ -68,13 +68,12 @@ withdraw_from_balance(int acc_number, double amount){ //W
 		}
 }
 reset_all_and_exit(){ //E
-			for (int i = 0; i < 50; i++) {
-				accounts[i][0] = 0;
-				accounts[i][1] = 0;
-			}
-			printf("All of the accounts were deleted succesfully. \n Thank you and goodbye");
-			exit = true;
+	for (int i = 0; i < 50; i++) {
+		accounts[i][0] = 0;
+		accounts[i][1] = 0;
 		}
+printf("All of the accounts were deleted succesfully. \n Thank you and goodbye");
+exit = true;}
 }
 
 add_interest_to_all(double interest){ //I

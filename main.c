@@ -1,9 +1,10 @@
 #include "stdio.h"
 #include "myBank.h"
+#include <stdbool.h>
 
 int main() {
 
-  boolean_exit = false;
+  bool = false;
   char display_functions[] = "List of operations: \n\n O   to open an account \n C   to deactivate account \n P   to print accounts \n B   to get current account balance \n D   to deposit to a balance \n W   to withdraw from a 	balance
   \n I   to add interest to everyone \n E   to remove all information and exit the program \n Please enter an operation key: \n";
 
@@ -58,6 +59,7 @@ int main() {
 
     case E:
     reset_all_and_exit();
+    exit = true;
     break;
 
     case I:

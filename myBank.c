@@ -2,14 +2,14 @@
 
 //Bank Functions
 open_account(){ //O
-	for (size_t i = 0; i < 50 ; i++) {
+	for (int i = 0; i < 50 ; i++) {
 			if(accounts[i][1] == 0){
 				printf("Please enter amount to deposit :");
 				double amount;
 				scanf("%lf" , amount);
 				accounts[i][0] = amount;
 				accounts[i][1] = 1;
-				printf("Your account number is : %d" , i+901);
+				printf("Your account number is : %ld" , i+901);
 			}
 			}
 			if(i==50){
@@ -55,14 +55,15 @@ deposit_to_balance(int acc_number, double amount){ //D
 }
 
 withdraw_from_balance(int acc_number, double amount){ //W
-	if (accounts[acc_number - 901][1]) == 1){
+	if (accounts[acc_number - 901][1] == 1){
 		if (accounts[acc_number - 901][0] < amount) {
 			printf("Insufficient funds \n");
 		}
 		else{
 			accounts[acc_number - 901][0] = accounts[acc_number - 901][0] - amount;
 			printf("Your balance is %lf\n", accounts[acc_number - 901][0]);
-	}}
+		}
+	}
 	else{
 			printf("Unable to withdraw. \n The account number %d is closed \n", acc_number);
 		}
@@ -73,7 +74,7 @@ reset_all_and_exit(){ //E
 		accounts[i][1] = 0;
 		}
 printf("All of the accounts were deleted succesfully. \n Thank you and goodbye");
-exit = true;}
+}
 }
 
 add_interest_to_all(double interest){ //I

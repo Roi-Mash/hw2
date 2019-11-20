@@ -33,8 +33,13 @@ while(!exit){
 
 	case p:
 
-		print_accounts(); //P
-
+		print_accounts(){ //P
+			for (size_t i = 0; i < 50 ; i++) {
+				if (accounts[i][1]) == 1){
+					printf("Account numbr :%d ---- balance :%lf\n" , i + 901 , accounts[i][0]);
+				}
+			}
+		}
 	case b:
 
 		get_balance(int acc_number){ //B

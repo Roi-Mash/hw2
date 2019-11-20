@@ -17,7 +17,23 @@ while(!exit){
 
 	case o:
 
-		open_account(); //O
+		open_account(){ //O
+			for (size_t i = 0; i < 50 ; i++) {
+					if(accounts[i][1] == 0){
+						printf("Please enter amount to deposit :");
+						double amount;
+						scanf("%lf" , amount);
+						accounts[i][0] = amount;
+						accounts[i][1] = 1;	
+						printf("Your account number is : %d" , i+901);
+						break;
+					}
+			}
+			
+			if(i==50){
+				printf("Unfortunately there is no unused account . . .");
+			}
+		}
 
 	case c:
 
@@ -73,10 +89,13 @@ while(!exit){
 			else{
 				accounts[acc_number - 901][0] = accounts[acc_number - 901][0] - amount;
 				printf("Your balance is %lf\n", accounts[acc_number - 901][0]);
-		}
+		
+			}
+		}	
 		else{
 				printf("The account number %d is closed /n", acc_number);
 			}
+			
 	}
 
 

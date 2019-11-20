@@ -1,12 +1,8 @@
 #include "stdio.h"
-
 int main (){
-
 	int acounts [50][2] = { 0 };
-
 	return 0;
 }
-
 
 open_account(); //O
 deactivate_account(int acc_number); //C

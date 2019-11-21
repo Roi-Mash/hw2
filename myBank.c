@@ -1,5 +1,5 @@
 #include "stdio.h"
-int accounts[50][2] = { 0 };
+double accounts[50][2] = { 0 };
 //Bank Functions
 void open_account(){ //O
 	for (int i = 0; i < 50 ; i++) {
@@ -9,7 +9,7 @@ void open_account(){ //O
 				scanf("%lf" , amount);
 				accounts[i][0] = amount;
 				accounts[i][1] = 1;
-				printf("Your account number is : %ld" , i+901);
+				printf("Your account number is : %d" , i+901);
 				break;
 			}
 				if(i==49){
@@ -32,7 +32,7 @@ void deactivate_account(int acc_number){  //C
 void print_accounts(){ //P
 	for (size_t i = 0; i < 50 ; i++) {
 		if (accounts[i][1] == 1){
-			printf("Account numbr :%d ---- balance :%lf\n" , i + 901 , accounts[i][0]);
+			printf("Account numbr :%ld ---- balance :%lf\n" , i + 901 , accounts[i][0]);
 		}
 	}
 }

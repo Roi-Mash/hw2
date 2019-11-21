@@ -1,5 +1,5 @@
 #include "stdio.h"
-accounts = { 0 };
+int accounts[50][2] = { 0 };
 //Bank Functions
 void open_account(){ //O
 	for (int i = 0; i < 50 ; i++) {

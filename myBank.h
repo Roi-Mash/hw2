@@ -1,5 +1,6 @@
 #include "stdio.h"
-extern int accounts[50][2];
+double accounts [50][2] = { 0 };
+
 
 void open_account(); //O
 void deactivate_account(int acc_number); //C

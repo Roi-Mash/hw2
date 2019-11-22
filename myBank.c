@@ -1,5 +1,5 @@
 #include "stdio.h"
-double accounts[50][2] = { 0 };
+ extern double accounts [50][2];
 //Bank Functions
 void open_account(){ //O
 	for (int i = 0; i < 50 ; i++) {

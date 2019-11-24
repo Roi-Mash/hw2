@@ -1,16 +1,14 @@
 #include "stdio.h"
-#include "myBank.h"
+#include "myBank.c"
 #include <stdbool.h>
 
 int main() {
-  int accounts [50][2];
-
   bool exit = false;
   while(!exit){
-    char display_functions[] = "List of operations: \n\n O   to open an account \n C   to deactivate account \n P   to print accounts \n B   to get current account balance \n D   to deposit to a balance \n W   to withdraw from a balance \n I   to add interest to everyone \n E   to remove all information and exit the program \n Please enter an operation key: \n";
+    char display_functions[] = "\nList of operations: \n\n O   to open an account \n C   to deactivate account \n P   to print accounts \n B   to get current account balance \n D   to deposit to a balance \n W   to withdraw from a balance \n I   to add interest to everyone \n E   to remove all information and exit the program \n Please enter an operation key: \n";
     printf("%s",display_functions);
     char choose;
-    scanf("%c" , &choose);
+    scanf(" %c" , &choose);
     choose = toupper(choose);
 
   	switch(choose){
@@ -59,6 +57,7 @@ int main() {
 
     case 'E':
     reset_all_and_exit();
+    exit = true;
     break;
 
     case 'I':

@@ -1,12 +1,14 @@
 #include "stdio.h"
- extern double accounts [50][2];
+ // extern double accounts [50][2];
+ double accounts [50][2] = { 0 };
+
 //Bank Functions
 void open_account(){ //O
 	for (int i = 0; i < 50 ; i++) {
-			if(accounts[i][1] == 0,i){
+			if(accounts[i][1] == 0){
 				printf("Please enter amount to deposit :");
 				double amount;
-				scanf("%lf" , amount);
+				scanf("%lf" , &amount);
 				accounts[i][0] = amount;
 				accounts[i][1] = 1;
 				printf("Your account number is : %d" , i+901);

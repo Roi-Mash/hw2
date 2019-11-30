@@ -13,11 +13,11 @@ maind: main.o libmyBank.so
 libmyBank.so: myBank.o
 	$(CC) -shared -o libmyBank.so myBank.o
 
-libmyBank.a: myBank.o 
+libmyBank.a: myBank.o
 	ar -rcs libmyBank.a myBank.o
 
 myBank.o: myBank.c myBank.h
-	$(CC) $(FLAGS) -c myBank.c
+	$(CC) $(FLAGS) -fPIC -c myBank.c
 
 main.o: main.c myBank.h
 	$(CC) $(FLAGS) -c main.c

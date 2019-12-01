@@ -1,7 +1,6 @@
 #include "stdio.h"
 #include "myBank.h"
 #include <stdbool.h>
-//#include "ctypes.h"
 
 int main() {
   bool exit = false;
@@ -39,20 +38,30 @@ int main() {
   	printf("Please enter account number: \n");
   	int acc_num2;
   	scanf("%d" , &acc_num2);
-  	printf("Please enter required amount: \n");
-  	double amount;
-  	scanf("%lf" , &amount);
-  	deposit_to_balance(acc_num2, amount);
+    if(acc_num2>=901 && acc_num2<=950){
+  	 printf("Please enter required amount: \n");
+  	 double amount;
+  	 scanf("%lf" , &amount);
+  	 deposit_to_balance(acc_num2, amount);
+    }
+    else{
+  		printf("Error: Unable to withdraw. \n The account number %d does not exist \n", acc_num2);
+  	}
   	break;
 
     case 'W':
   	printf("Please enter account number: \n");
   	int acc_num3;
   	scanf("%d" , &acc_num3);
-  	printf("Please enter required amount: \n");
-  	double amount1;
-  	scanf("%lf" , &amount1);
-  	withdraw_from_balance(acc_num3, amount1);
+    if(acc_num3>=901 && acc_num3<=950){
+      printf("Please enter required amount: \n");
+  	  double amount1;
+  	  scanf("%lf" , &amount1);
+  	  withdraw_from_balance(acc_num3, amount1);
+    }
+    else{
+      printf("Error: Unable to withdraw. \n The account number %d does not exist \n", acc_num3);
+    }
   	break;
 
     case 'E':

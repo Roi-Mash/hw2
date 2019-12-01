@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include <stdbool.h>
 
 extern double accounts [50][2];
 
@@ -6,7 +7,7 @@ extern double accounts [50][2];
 void open_account(){ //O
 	for (int i = 0; i < 50 ; i++) {
 			if(accounts[i][1] == 0){
-				printf("Please enter amount to deposit :");
+				printf("Please enter initial amount to deposit :");
 				double amount;
 				scanf("%lf" , &amount);
 				accounts[i][0] = amount;
@@ -21,62 +22,73 @@ void open_account(){ //O
 }
 
 void deactivate_account(int acc_number){  //C
-	if (accounts[acc_number - 901][1] == 1){
-			accounts[acc_number - 901][0] = 0;
-			accounts[acc_number - 901][1] = 0;
+	if(acc_number>=901 && acc_number<=950){
+		if (accounts[acc_number - 901][1] == 1){
+				accounts[acc_number - 901][0] = 0;
+				accounts[acc_number - 901][1] = 0;
+				printf("The account number %d is now closed \n", acc_number);
+
+		}
+		else{
+			printf("The account number %d is already closed \n", acc_number);
+		}
 	}
 	else{
-		printf("The account number %d is already closed \n", acc_number);
+		printf("Error: The account number %d does not exist \n", acc_number);
 	}
 }
 
-
 void print_accounts(){ //P
+	bool activated = false;
 	for (size_t i = 0; i < 50 ; i++) {
 		if (accounts[i][1] == 1){
 			printf("Account number :%ld ---- balance :%.2f\n" , i + 901 , accounts[i][0]);
+			activated = true;
 		}
 	}
+	if (activated == false){
+		printf("There are no open accounts ");
+	}
 }
-
 
 void get_balance(int acc_number){ //B
-
-	if (accounts[acc_number - 901][1] == 1){
-			printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
-	}
-	else{
-			printf("Error: the account number %d is closed \n", acc_number);
-	}
-}
-
-
-void deposit_to_balance(int acc_number, double amount){ //D
-	if (accounts[acc_number - 901][1] == 1){
-			accounts[acc_number - 901][0] = accounts[acc_number - 901][0] + amount;
-			printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
-	}
-	else{
-			printf("Error: The account number %d is closed \n", acc_number);
-		}
-}
-
-
-void withdraw_from_balance(int acc_number, double amount){ //W
-	if (accounts[acc_number - 901][1] == 1){
-		if (accounts[acc_number - 901][0] < amount) {
-			printf("Insufficient funds \n");
+	if(acc_number>=901 && acc_number<=950){
+		if (accounts[acc_number - 901][1] == 1){
+				printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
 		}
 		else{
-			accounts[acc_number - 901][0] = accounts[acc_number - 901][0] - amount;
-			printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
-		}
-	}
-	else{
-			printf("Error: Unable to withdraw. \n The account number %d is closed \n", acc_number);
+				printf("Error: the account number %d is closed\n", acc_number);
 		}
 }
+	else{
+			printf("Error: the account number %d isn't valid \n", acc_number);
+	}
+}
 
+void deposit_to_balance(int acc_number, double amount){ //D
+		if (accounts[acc_number - 901][1] == 1){
+			accounts[acc_number - 901][0] = accounts[acc_number - 901][0] + amount;
+			printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
+		}
+	else{
+		printf("Error: Unable to withdraw. \n The account number %d is closed\n", acc_number);
+	}
+}
+
+void withdraw_from_balance(int acc_number, double amount){ //W
+		if (accounts[acc_number - 901][1] == 1){
+			if (accounts[acc_number - 901][0] < amount) {
+				printf("Insufficient funds \n");
+			}
+			else{
+				accounts[acc_number - 901][0] = accounts[acc_number - 901][0] - amount;
+				printf("Your balance is %.2f\n", accounts[acc_number - 901][0]);
+			}
+		}
+		else{
+			printf("Error: Unable to withdraw. \n The account number %d is closed\n", acc_number);
+		}
+	}
 
 void reset_all_and_exit(){ //E
 	for (int i = 0; i < 50; i++) {
@@ -91,5 +103,5 @@ void add_interest_to_all(double interest){ //I
     for (int i = 0; i < 50; i++) {
         accounts[i][0] = accounts[i][0] * ((interest/100)+1);
     }
-    printf("Interest (%.4f%) was updated for all accounts succesfully \n" , interest);
+    printf("Interest (%.4f precent was updated for all accounts succesfully \n" , interest);
 }

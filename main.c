@@ -1,6 +1,7 @@
 #include "stdio.h"
-#include "myBank.c"
+#include "myBank.h"
 #include <stdbool.h>
+//#include "ctypes.h"
 
 int main() {
   bool exit = false;
@@ -10,7 +11,6 @@ int main() {
     char choose;
     scanf(" %c" , &choose);
     choose = toupper(choose);
-
   	switch(choose){
 
   	case 'O':
@@ -63,14 +63,13 @@ int main() {
     case 'I':
     printf("Please enter required interest in precentage: \n");
   	double interest;
-  	scanf("%lf" , &interest);
+  	scanf("%lf%" , &interest);
     add_interest_to_all(interest);
     break;
 
   	default:
   	printf("Unrecognized input, please try again. \n");
   	break;
-
   }
 }
   return 0;
